@@ -49,20 +49,32 @@ def quickSort(arr):
     right = [x for x in arr if x > pivot] # all values greater than pivot
     return quickSort(left) + middle + quickSort(right)
 
-def linearSearch(arr):
-    return arr
+def linearSearch(arr, target):
+    for i in range(len(arr)):
+        if arr[i] == target:
+            return i
+    return -1
 
-def binarySearch(arr):
-    return arr
+def binarySearch(arr, target):
+    low, high = 0, len(arr) - 1
+    while low <= high:
+        mid = (low + high) // 2
+        if arr[mid] == target:
+            return mid
+        elif arr[mid] < target:
+            low = mid + 1
+        else:
+            high = mid - 1
+    return -1
 
 if __name__ == "__main__":
     arr = [64, 34, 25, 12, 22, 11, 90]
-    output = []
-    # output = bubbleSort(arr)
-    # output = insertionSort(arr)
-    # output = mergeSort(arr)
-    output = quickSort(arr)
+    target = 25
 
-    print("Sorted array:")
-    for i in range(len(output)):
-        print("%d" % output[i], end=" ")
+    print(f"Input:         {arr}")
+    print(f"Bubble sort:   {bubbleSort(arr[:])}")
+    print(f"Insertion sort:{insertionSort(arr[:])}")
+    print(f"Merge sort:    {mergeSort(arr)}")
+    print(f"Quick sort:    {quickSort(arr)}")
+    print(f"Linear search: index {linearSearch(arr, target)} for target {target}")
+    print(f"Binary search: index {binarySearch(quickSort(arr), target)} for target {target}")
