@@ -1,4 +1,4 @@
-def bubbleSort(arr):
+def bubble_sort(arr):
     n = len(arr)
     for i in range(n):
         swapped = False;
@@ -10,7 +10,7 @@ def bubbleSort(arr):
             break
     return arr
 
-def insertionSort(arr):
+def insertion_sort(arr):
     n = len(arr)
     for i in range(1, n): # i = insert index
         currentElement = arr[i] # element to insert
@@ -21,11 +21,11 @@ def insertionSort(arr):
         arr[j+1] = currentElement
     return arr
 
-def mergeSort(arr):
+def merge_sort(arr):
     if len(arr) <= 1: return arr
     mid = len(arr) // 2
-    left = mergeSort(arr[:mid])
-    right = mergeSort(arr[mid:])
+    left = merge_sort(arr[:mid])
+    right = merge_sort(arr[mid:])
 
     result = []
     i = j = 0
@@ -40,22 +40,22 @@ def mergeSort(arr):
     result += right[j:]
     return result
 
-def quickSort(arr):
+def quicksort(arr):
     if len(arr) <= 1:
         return arr
     pivot = arr[len(arr) // 2]
     left = [x for x in arr if x < pivot] # all values smaller than pivot
     middle = [x for x in arr if x == pivot] # all values equal to pivot
     right = [x for x in arr if x > pivot] # all values greater than pivot
-    return quickSort(left) + middle + quickSort(right)
+    return quicksort(left) + middle + quicksort(right)
 
-def linearSearch(arr, target):
+def linear_search(arr, target):
     for i in range(len(arr)):
         if arr[i] == target:
             return i
     return -1
 
-def binarySearch(arr, target):
+def binary_search(arr, target):
     low, high = 0, len(arr) - 1
     while low <= high:
         mid = (low + high) // 2
@@ -72,9 +72,9 @@ if __name__ == "__main__":
     target = 25
 
     print(f"Input:         {arr}")
-    print(f"Bubble sort:   {bubbleSort(arr[:])}")
-    print(f"Insertion sort:{insertionSort(arr[:])}")
-    print(f"Merge sort:    {mergeSort(arr)}")
-    print(f"Quick sort:    {quickSort(arr)}")
-    print(f"Linear search: index {linearSearch(arr, target)} for target {target}")
-    print(f"Binary search: index {binarySearch(quickSort(arr), target)} for target {target}")
+    print(f"Bubble sort:   {bubble_sort(arr[:])}")
+    print(f"Insertion sort:{insertion_sort(arr[:])}")
+    print(f"Merge sort:    {merge_sort(arr)}")
+    print(f"Quick sort:    {quicksort(arr)}")
+    print(f"Linear search: index {linear_search(arr, target)} for target {target}")
+    print(f"Binary search: index {binary_search(quicksort(arr), target)} for target {target}")
